@@ -53,12 +53,13 @@ export default (state = initialState, action) => {
         loading: false
       };
     case LOGIN:
-      const { token, otp } = action.payload;
+      const { token, otp, mes } = action.payload;
       return {
         ...state,
         otp2: otp,
         token: token,
-        loading: false
+        loading: false,
+        isAuthenticated: mes
       };
     case PHONE_VER:
       return {

@@ -55,15 +55,15 @@ const Settings = ({ users: { user }, loadUser, setLoading, changePass }) => {
             <div className="col s11 ">
               <strong>Email:</strong> {email}
             </div>
-            <div className="col s1  ">
+            {/* <div className="col s1  ">
               <a href="">edit</a>
-            </div>
+            </div> */}
             <div className="col s11 ">
               <strong>Phone:</strong> {phone}
             </div>
-            <div className="col s1   ">
+            {/* <div className="col s1   ">
               <a href="">edit</a>
-            </div>
+            </div> */}
             <br />
             <br />
             <br />
@@ -112,6 +112,7 @@ const Settings = ({ users: { user }, loadUser, setLoading, changePass }) => {
                     />
                     <label htmlFor="passn"> New Password</label>
                     <br></br>
+
                     <button className="btn" type="submit" onClick={changep}>
                       submit
                     </button>

@@ -63,27 +63,6 @@ div.card2 {
 .error {
   color: red;
 }
-.walletop {
-  box-shadow: 0px 1px 3px 2px #aaaaaa;
-}
-.walletop a {
-  color: black;
-}
-.blacktxt {
-  color: black;
-}
-/* Settings */
-.settings {
-  box-shadow: 0px 1px 3px 2px #aaaaaa;
-}
-.setheader {
-  box-shadow: 0px 2px 3px 1px rgb(212, 202, 202);
-  height: 44px;
-}
-/* .setcontent {
-  margin-bottom: 10px;
-} */
-/* Settings */
 
 /* Wallet SideNav */
 .nav-bar {
@@ -139,7 +118,17 @@ div.card2 {
 }
 
 /*  */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Fade Effect */
 .fade {
   animation: fadein 1s;
   -moz-animation: fadein 1s; /* Firefox */
@@ -181,6 +170,7 @@ div.card2 {
     opacity: 1;
   }
 }
+/* Fade Effect */
 
 @media only screen and (max-width: 600px) {
   .nav-bar {
@@ -188,3 +178,45 @@ div.card2 {
     min-width: 125px;
   }
 }
+/* Wallet header */
+.walletop {
+  box-shadow: 0px 1px 3px 2px #aaaaaa;
+  background: linear-gradient(to top, #47a0d3 0%, #01115c 100%);
+}
+.walletop a {
+  color: rgb(255, 255, 255);
+}
+.blacktxt {
+  color: black;
+}
+/* Wallet header */
+
+/* Cashinjs */
+.cashinimg {
+  box-shadow: 0px 0px 2px 1px #aaaaaa;
+  width: 150px;
+  height: 150px;
+}
+.img_cashin {
+  height: 100px;
+  width: 100px;
+}
+.img_cashin img {
+  height: auto;
+}
+.desc_cashin {
+  bottom: 1px;
+}
+
+/* Cashinjs */
+
+/* Settings */
+.settings {
+  box-shadow: 0px 1px 3px 2px #aaaaaa;
+}
+.setheader {
+  box-shadow: 0px 2px 3px 1px rgb(212, 202, 202);
+  height: 44px;
+}
+
+/* Settings */

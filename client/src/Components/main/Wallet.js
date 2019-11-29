@@ -5,6 +5,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import BuyLoad from "./BuyLoad/BuyLoad";
 import LoadAmount from "./BuyLoad/LoadAmount";
+import Cashin from "./Cashinout/Cashin";
 import Dashboard from "./Dashboard";
 import Settings from "./Settings";
 import MoneyTransfer from "./MoneyTransfer";
@@ -34,7 +35,7 @@ const Wallet = props => {
 
   return (
     <div className="fade ">
-      <div className="nav-bar hide-on-med-and-down">
+      {/* <div className="nav-bar hide-on-med-and-down">
         <ul id="nav-ul">
           <li className="li">
             <i className="small material-icons">account_circle</i>Account
@@ -62,18 +63,23 @@ const Wallet = props => {
             </div>
           </li>
         </ul>
-      </div>
-      <div className="walletop grey lighten-5 show-on-medium-and-down hide-on-large-only">
+      </div> */}
+      {/* <div className="walletop grey lighten-5 show-on-medium-and-down hide-on-large-only">
+       */}
+      <div className="walletop">
+        <br></br>
         <div className="row">
           <div className="col s12">
             <div className="container">
-              <div className="container col s4 center ">
-                <div className="col s12 ">
-                  <i className="small material-icons">account_circle</i>
-                </div>
-                <div className="col s12">Account</div>
+              <div className="container col s4 l2 center ">
+                <a>
+                  <div className="col s12 ">
+                    <i className="small material-icons">account_circle</i>
+                  </div>
+                  <div className="col s12">Account</div>
+                </a>
               </div>
-              <div className="col s4 center">
+              <div className="col s4 l2 center">
                 <a href={`${path}/`}>
                   <div className="col s12">
                     <i className="small material-icons">dashboard</i>
@@ -81,7 +87,7 @@ const Wallet = props => {
                   <div className="col s12">Dashboard</div>
                 </a>
               </div>
-              <div className="col s4 center">
+              <div className="col s4 l2 center">
                 <Link to={`${path}/BuyLoad`}>
                   <div className="col s12">
                     <i className="small material-icons">
@@ -91,7 +97,17 @@ const Wallet = props => {
                   <div className="col s12">Buy Load</div>
                 </Link>
               </div>
-              <div className="col s4 center">
+              <div className="col s4 l2 center">
+                <Link to={`${path}/CashInOut`}>
+                  <div className="col s12">
+                    <i className="small material-icons">
+                      account_balance_wallet
+                    </i>
+                  </div>
+                  <div className="col s12">Cashin/Cashout</div>
+                </Link>
+              </div>
+              <div className="col s4 l2 center">
                 <Link to={`${path}/Transfer`}>
                   <div className="col s12">
                     <i className="small material-icons">monetization_on</i>
@@ -99,7 +115,7 @@ const Wallet = props => {
                   <div className="col s12">Transfer Money</div>
                 </Link>
               </div>
-              <div className="col s4 center">
+              <div className="col s4 l2 center">
                 <Link to={`${path}/Settings`}>
                   <div className="col s12">
                     <i className="small material-icons">settings </i>
@@ -108,6 +124,7 @@ const Wallet = props => {
                 </Link>
               </div>
             </div>
+            <br></br>
           </div>
         </div>
       </div>
@@ -120,6 +137,7 @@ const Wallet = props => {
             <Route path={`${path}/LoadAmount`} component={LoadAmount} />
             <Route path={`${path}/Settings`} component={Settings} />
             <Route path={`${path}/Transfer`} component={MoneyTransfer} />
+            <Route path={`${path}/CashInOut`} component={Cashin} />
             <Route path={`${path}/BuyLoad`} component={BuyLoad} />
             <Route path={`${path}/`} component={Dashboard} />
           </Switch>

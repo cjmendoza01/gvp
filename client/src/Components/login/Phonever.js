@@ -14,7 +14,8 @@ const Phonever = ({
   const send = () => {
     // setStatus(code);
     //+639053724922
-    phonev(phone);
+    const phonen = "+639" + phone;
+    phonev(phonen);
   };
 
   const check = () => {
@@ -22,7 +23,7 @@ const Phonever = ({
       M.toast({ html: "Success" });
       const data = {
         emailad: email,
-        phone: phone
+        phonen: "+639" + phone
       };
       savePhone(data);
     } else {
@@ -33,7 +34,6 @@ const Phonever = ({
     <div>
       <div className="container">
         <div className="" style={{ width: "300px" }}>
-          {/* <div> */}
           <div className="card-panel center">
             <h4>
               {" "}
@@ -42,17 +42,25 @@ const Phonever = ({
               </strong>{" "}
             </h4>
             <h6>Enter Phone Number</h6>
-            {/* <form onSubmit={onSubmit}> */}
-            <input
+            +639
+            <div className="input-field inline">
+              <input
+                type="number"
+                name="phone"
+                maxlength="9"
+                value={phone}
+                onChange={e => setPhone(e.target.value)}
+              />
+            </div>
+            <a href="/login">Skip for now</a>
+            {/* <input
               type="text"
               name="phone"
               value={phone}
               onChange={e => setPhone(e.target.value)}
-            />
-            {}
+            /> */}
             <br />
             <br />
-
             {phonec ? (
               <div>
                 <button className="btn" onClick={send} name="action">
@@ -81,10 +89,7 @@ const Phonever = ({
                 <br></br>
               </div>
             )}
-
-            {/* </form> */}
           </div>
-          {/* </div> */}
         </div>
       </div>
     </div>

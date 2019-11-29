@@ -142,15 +142,16 @@ export const login = User => async dispatch => {
       }
     };
     const res = await axios.post("/api/users/auth", User, config);
-    const token1 = res.data.token;
-    // console.log(res.data);
-    const res2 = await axios.get("/api/users/phonever");
-    const tk = "G" + res2.data.tk;
+    console.log(res);
+    const token1 = res.data.tokens.token;
+    const message = res.data.tokens.messsage;
+    const tk = "G" + res.data.tokens.otp;
     const user = {
       token: token1,
-      otp: tk
+      otp: tk,
+      mes: message
     };
-    console.log(res2.data);
+
     dispatch({
       type: LOGIN,
       payload: user
@@ -180,10 +181,10 @@ export const phonev = phonen => async dispatch => {
   });
 };
 export const savePhone = user => async dispatch => {
-  const { emailad, phone } = user;
+  const { emailad, phonen } = user;
   console.log(user);
   const data = {
-    phonenum: phone,
+    phonenum: phonen,
     email: emailad
   };
   console.log(data);
@@ -192,7 +193,7 @@ export const savePhone = user => async dispatch => {
       "Content-Type": "application/json"
     }
   };
-  const res = await axios.put("/api/users/", data, config);
+  const res = await axios.put("/api/users", data, config);
   console.log(res.data);
   dispatch({
     type: SET_STATUS,

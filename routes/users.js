@@ -68,12 +68,12 @@ router.post(
 router.put("/", async (req, res) => {
   try {
     const { email, phonenum } = req.body;
-
+    console.log(phonenum);
     const contactFields = {};
     contactFields.number = phonenum;
 
     user = await User.findOneAndUpdate(
-      email,
+      { email: email },
       { $set: contactFields },
       { new: true }
     );
@@ -131,6 +131,8 @@ router.post(
 //Login
 
 router.post("/auth", async (req, res) => {
+  let tk = null;
+  let message = null;
   const { email, password } = req.body;
   try {
     let user = await User.findOne({ email });
@@ -148,7 +150,23 @@ router.post("/auth", async (req, res) => {
         id: user.id
       }
     };
-    const tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+
+    let user2 = await User.findOne({ email: email });
+    if (!user2.number === null) {
+      tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+      const accountSid = "ACc0e429210a13959e6b6d0ff1f16fd39a";
+      const authToken = "ec54945685d27767aa3585bca550523f";
+      const client = require("twilio")(accountSid, authToken);
+
+      client.messages.create({
+        body: "verif Code: G" + tk,
+        from: "+12082623275",
+        to: user2.number
+      });
+    } else {
+      message = true;
+    }
+
     jwt.sign(
       payload,
       config.get("jwtSecret"),
@@ -157,48 +175,45 @@ router.post("/auth", async (req, res) => {
       },
       (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        const tokens = {
+          token: token,
+          otp: tk,
+          message: message
+        };
+        res.json({ tokens });
       }
     );
   } catch (err) {
     console.log(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json({ msg: "Server Error" });
   }
 });
 
 //phone verification
-router.get("/phonever", (req, res) => {
-  // const { tk } = req.body;
-  try {
-    const tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
-    const accountSid = "ACc0e429210a13959e6b6d0ff1f16fd39a";
-    const authToken = "ec54945685d27767aa3585bca550523f";
-    const client = require("twilio")(accountSid, authToken);
+router.get("/phonever", async (req, res) => {
+  const email = req.body;
+  console.log(email);
+  const user = await User.findOne({ email: email });
+  if (user) {
+    const number = user.number;
 
-    client.messages.create({
-      body: "verif Code: G" + tk,
-      from: "+12082623275",
-      to: "+639053724922"
-    });
-    // const payload = {
-    //   user: {
-    //     id: tk
-    //   }
-    // };
-    // jwt.sign(
-    //   payload,
-    //   config.get("jwtSecret"),
-    //   {
-    //     expiresIn: 360000
-    //   },
-    //   (err, token) => {
-    //     if (err) throw err;
-    //     res.json({ token });
-    //   }
-    // );
-    res.json({ tk });
-  } catch (error) {
-    res.send("Error");
+    try {
+      const tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+      const accountSid = "ACc0e429210a13959e6b6d0ff1f16fd39a";
+      const authToken = "ec54945685d27767aa3585bca550523f";
+      const client = require("twilio")(accountSid, authToken);
+
+      client.messages.create({
+        body: "verif Code: G" + tk,
+        from: "+12082623275",
+        to: number
+      });
+      res.json({ tk });
+    } catch (error) {
+      res.send("Error");
+    }
+  } else {
+    res.send(email);
   }
 });
 // +639053724922
@@ -229,8 +244,9 @@ router.post("/emailver", (req, res) => {
     const mailOptions = {
       from: "crill.garci18@gmail.com",
       to: email,
-      subject: "Sending Email using Node.js",
-      html: "Successfully Registered! <br>copy url:<h1> " + token + "</h1>"
+      subject: "GVPX Email Verification ",
+      html:
+        "<h1>Successfully Registered!<h1> <br>copy url:<h5> " + token + "</h5>"
     };
 
     transporter.sendMail(mailOptions, function(error, info) {
@@ -270,7 +286,7 @@ router.post("/changepass", async (req, res) => {
     );
     res.json({ msg: "Password Successfully Updated" });
   } catch (err) {
-    res.json({ msg: "Sorry" });
+    res.json({ msg: "Server Error" });
   }
 });
 module.exports = router;

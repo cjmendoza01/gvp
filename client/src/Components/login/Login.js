@@ -17,7 +17,7 @@ const Login = props => {
   }, []);
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
-  const { error, otp2, isAuthenticated, loading } = props.users;
+  const { error, otp2, isAuthenticated, loading, token } = props.users;
   const onSubmit = async () => {
     // props.history.push("/");
     const User = {
@@ -33,6 +33,7 @@ const Login = props => {
   };
 
   if (isAuthenticated) {
+    localStorage.setItem("token", token);
     props.history.push("/Wallet");
   }
   if (loading === true) {

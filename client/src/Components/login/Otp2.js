@@ -18,7 +18,6 @@ const Otp = props => {
 
     // props.check(otp)
     if (code2 === otp2) {
-      localStorage.setItem("token", token);
       props.authenticate();
       M.toast({ html: "Connected" });
     } else {
