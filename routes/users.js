@@ -152,7 +152,7 @@ router.post("/auth", async (req, res) => {
     };
 
     let user2 = await User.findOne({ email: email });
-    if (!user2.number === null) {
+    if (user2.number) {
       tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
       const accountSid = "ACc0e429210a13959e6b6d0ff1f16fd39a";
       const authToken = "ec54945685d27767aa3585bca550523f";

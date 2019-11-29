@@ -52,6 +52,7 @@ const Phonever = ({
                 onChange={e => setPhone(e.target.value)}
               />
             </div>
+            <br></br>
             <a href="/login">Skip for now</a>
             {/* <input
               type="text"
