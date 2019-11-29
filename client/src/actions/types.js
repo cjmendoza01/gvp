@@ -1,0 +1,15 @@
+export const ADD_USER = "ADD_USER";
+export const AUTHENTICATE = "AUTHENTICATE";
+export const CLEAR_ERROR = "CLEAR_ERROR";
+export const GET_USER = "GET_USER";
+export const LOGIN = "LOGIN";
+export const PHONE_VER = "PHONE_VER";
+export const SET_ERROR = "SET_ERROR";
+export const SET_LOADING = "SET_LOADING";
+export const SET_LOADINGF = "SET_LOADINGF";
+export const SET_OTP = "SET_OTP";
+export const SETOTP = "SET_OTP";
+export const SET_OTP2 = "SET_OTP2";
+export const SET_OTPSCS = "SET_OTPSCS";
+export const SET_USER = "SET_USER";
+export const SET_STATUS = "SET_STATUS";

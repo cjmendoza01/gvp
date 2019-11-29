@@ -1,0 +1,190 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+nav .black {
+  background-color: black;
+}
+
+.img2 {
+  width: 100%;
+  max-height: 20%;
+  max-width: 100%;
+}
+.img1 {
+  height: auto;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  padding: 20px;
+}
+.aboutimg {
+  height: 100px;
+}
+div.card {
+  height: 250px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+div.card2 {
+  height: 80%;
+}
+.abouttxt {
+  text-align: justify;
+}
+.centered {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+}
+.side-nav {
+  height: 100%;
+  width: 15%;
+
+  background: lightgray;
+}
+/* // */
+
+* {
+  box-sizing: border-box;
+}
+.error {
+  color: red;
+}
+.walletop {
+  box-shadow: 0px 1px 3px 2px #aaaaaa;
+}
+.walletop a {
+  color: black;
+}
+.blacktxt {
+  color: black;
+}
+/* Settings */
+.settings {
+  box-shadow: 0px 1px 3px 2px #aaaaaa;
+}
+.setheader {
+  box-shadow: 0px 2px 3px 1px rgb(212, 202, 202);
+  height: 44px;
+}
+/* .setcontent {
+  margin-bottom: 10px;
+} */
+/* Settings */
+
+/* Wallet SideNav */
+.nav-bar {
+  background: rgb(49, 47, 47);
+  width: 20%;
+  height: 100%;
+  position: fixed;
+  top: 64px;
+  left: 0px;
+  overflow-y: auto;
+  box-shadow: 5px 1px 5px #aaaaaa;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: black;
+}
+.nav-bar > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: rgb(250, 247, 247);
+}
+/* .nav-bar > ul > li > a {
+  padding: 10px;
+  background: lightgrey;
+} */
+.nav-bar > ul > li:hover {
+  background: #b0cef5;
+  color: #000000;
+}
+.nav-bar .active {
+  background: #173459;
+  color: #f8f9f9;
+}
+.nav-bar li {
+  border-bottom: 0.5px solid #333;
+}
+.nav-bar li:last-child {
+  border: none;
+}
+
+.nav-active {
+  color: blue;
+}
+
+/* Wallet SideNav */
+
+.content {
+  margin-left: 200px;
+  width: 70%;
+  padding: 15px;
+}
+
+/*  */
+
+.fade {
+  animation: fadein 1s;
+  -moz-animation: fadein 1s; /* Firefox */
+  -webkit-animation: fadein 1s; /* Safari and Chrome */
+  -o-animation: fadein 1s; /* Opera */
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-bar {
+    top: 56px;
+    min-width: 125px;
+  }
+}
