@@ -12,7 +12,7 @@ const Cashin = () => {
     <div className="container">
       You can cash In/out through GVPX machines or through: Cash In
       <div>
-        <div className="cashinimg col s4">
+        <div className="cashinimg col s6">
           <div className="container">
             <center>
               <div className="cashhead">
@@ -23,7 +23,7 @@ const Cashin = () => {
           </div>
         </div>
 
-        <div className="cashinimg col s4">
+        <div className="cashinimg col s6">
           <div className="container">
             <center>
               <div className="cashhead">
@@ -33,7 +33,7 @@ const Cashin = () => {
             </center>
           </div>
         </div>
-        <div className="cashinimg col s4">
+        <div className="cashinimg col s6">
           <div className="container">
             <center>
               {" "}
@@ -44,7 +44,7 @@ const Cashin = () => {
             </center>
           </div>
         </div>
-        <div className="cashinimg col s4">
+        <div className="cashinimg col s6">
           <div className="container">
             <center>
               {" "}
@@ -55,7 +55,7 @@ const Cashin = () => {
             </center>
           </div>
         </div>
-        <div className="cashinimg col s4">
+        <div className="cashinimg col s6">
           <div className="container">
             <center>
               {" "}
