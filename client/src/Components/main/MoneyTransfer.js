@@ -1,10 +1,15 @@
 import React from "react";
-
+import Webcam from "react-webcam";
 const MoneyTransfer = () => {
+  const videoConstraints = {
+    facingMode: "user"
+  };
   return (
     <div className="container">
       Money Transfer
-      <div></div>
+      <div>
+        <Webcam videoConstraints={videoConstraints} />
+      </div>
     </div>
   );
 };
