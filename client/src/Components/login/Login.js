@@ -69,7 +69,7 @@ const Login = props => {
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
-            Username/Email
+            Email
             <input
               type="password"
               name="password"

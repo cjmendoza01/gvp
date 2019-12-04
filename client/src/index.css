@@ -15,12 +15,14 @@ code {
 nav .black {
   background-color: black;
 }
-
+/* topimages */
 .img2 {
   width: 100%;
   max-height: 20%;
   max-width: 100%;
 }
+
+/* small images in  body */
 .img1 {
   height: auto;
   width: 100%;
@@ -28,6 +30,7 @@ nav .black {
   max-width: 100%;
   padding: 20px;
 }
+/* About images */
 .aboutimg {
   height: 100px;
 }

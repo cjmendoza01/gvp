@@ -33,6 +33,7 @@ const Settings = ({ users: { user }, loadUser, setLoading, changePass }) => {
     changePass(user2);
     // M.toast({ html: "Password Changed" });
   };
+  const checkbox = () => {};
   return (
     <div className="container fade">
       <div className="settings">
@@ -117,12 +118,18 @@ const Settings = ({ users: { user }, loadUser, setLoading, changePass }) => {
                       submit
                     </button>
                   </form>
+                  <br />
+                  <br />
                 </Fragment>
               )}
             </div>
             <form>
               <label className="col s12 ">
-                <input type="checkbox" checked="checked" />
+                <input
+                  type="checkbox"
+                  className="filled-in"
+                  onClick={checkbox}
+                />
                 <span className="blacktxt">Send OTP on login </span>
               </label>
             </form>

@@ -142,10 +142,11 @@ export const login = User => async dispatch => {
       }
     };
     const res = await axios.post("/api/users/auth", User, config);
-    console.log(res);
+    // console.log(res);
     const token1 = res.data.tokens.token;
-    const message = res.data.tokens.messsage;
-    const tk = "G" + res.data.tokens.otp;
+    const message = res.data.tokens.message;
+
+    const tk = "" + res.data.tokens.otp;
     const user = {
       token: token1,
       otp: tk,

@@ -9,7 +9,7 @@ const devTools =
   process.env.NODE_ENV === "production"
     ? applyMiddleware(...middleware)
     : composeWithDevTools(applyMiddleware(...middleware));
-
+// window.__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function() {};
 const store = createStore(
   rootReducer,
   initialState,

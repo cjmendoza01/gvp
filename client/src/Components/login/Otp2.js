@@ -29,7 +29,6 @@ const Otp = props => {
     <div className="fade">
       <div className="container">
         <div className="" style={{ width: "300px" }}>
-          {/* <div> */}
           <div className="card-panel center">
             <h4>
               {" "}
@@ -38,7 +37,6 @@ const Otp = props => {
               </strong>{" "}
             </h4>
             <h6>Verification Code sent to your phone</h6>
-            {/* <form onSubmit={onSubmit}> */}
             <input
               type="text"
               name="code2"
@@ -53,9 +51,7 @@ const Otp = props => {
             </button>
             <br></br>
             <a>Through email</a>
-            {/* </form> */}
           </div>
-          {/* </div> */}
         </div>
       </div>
     </div>

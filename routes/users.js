@@ -152,6 +152,7 @@ router.post("/auth", async (req, res) => {
     };
 
     let user2 = await User.findOne({ email: email });
+
     if (user2.number) {
       tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
       const accountSid = "ACc0e429210a13959e6b6d0ff1f16fd39a";
@@ -159,12 +160,12 @@ router.post("/auth", async (req, res) => {
       const client = require("twilio")(accountSid, authToken);
 
       client.messages.create({
-        body: "verif Code: G" + tk,
+        body: "verif Code: " + tk,
         from: "+12082623275",
         to: user2.number
       });
     } else {
-      message = true;
+      message = "true";
     }
 
     jwt.sign(
@@ -290,3 +291,9 @@ router.post("/changepass", async (req, res) => {
   }
 });
 module.exports = router;
+
+// Globe Labs
+// code=ks5ppx4IbB4bAC54o5eu84Rn4hzxz5aIEojBdHG6brEUMKMMruEbgynfGxMEbsGyk8eSr8x9GfdjKyRUx7B9KtqbanaIEM8daFbyoXKu4erX5CxM89XfkqRyeHzaTXKERy8cR65Hnq8rgfp4reBCyaon8uRn8gzFpxaGqIpeBbyt9XKr5Uxdx8zfMek7eSyXMEzsGogEAfKkMnEuyxbAxUjxjjEH5xz6zIxoRRqhj4oqXuG74gACyepbgIqA96ns
+
+// "access_token": "ouleGmIVKFvJxSmNvn_yqLaAWJUhf7DtY_3m3LXwEgo",
+// "subscriber_number": "9053724922"

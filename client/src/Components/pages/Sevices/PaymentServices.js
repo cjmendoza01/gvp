@@ -18,7 +18,7 @@ const PaymentServices = () => {
       <div className="container">
         {" "}
         <div>
-          <img src={Ps1} alt="" className="img1" />
+          <img src={Ps1} alt="" className="img2" />
         </div>
         <h1 className="flow-text center">Payment Services</h1>
         <div className="divider"></div>

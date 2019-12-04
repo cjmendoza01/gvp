@@ -9,7 +9,7 @@ app.use(express.json({ extended: false }));
 
 app.use("/api/users", require("./routes/users"));
 app.use("/auth", require("./routes/auth"));
-
+app.use("/sms", require("./routes/sms"));
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get("*", (req, res) =>

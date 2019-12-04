@@ -17,7 +17,14 @@ const Phonever = ({
     const phonen = "+639" + phone;
     phonev(phonen);
   };
-
+  const check2 = () => {
+    M.toast({ html: "Success" });
+    const data = {
+      emailad: email,
+      phonen: ""
+    };
+    savePhone(data);
+  };
   const check = () => {
     if (phonec === code) {
       M.toast({ html: "Success" });
@@ -53,7 +60,9 @@ const Phonever = ({
               />
             </div>
             <br></br>
-            <a href="/login">Skip for now</a>
+            <a href="/login" onClick={check2}>
+              Skip for now
+            </a>
             {/* <input
               type="text"
               name="phone"

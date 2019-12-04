@@ -31,41 +31,11 @@ const Wallet = props => {
   if (status === "NewPassword") {
     props.history.push("/");
     M.toast({ html: "Password Changed" });
+    localStorage.clear("token");
   }
 
   return (
     <div className="fade ">
-      {/* <div className="nav-bar hide-on-med-and-down">
-        <ul id="nav-ul">
-          <li className="li">
-            <i className="small material-icons">account_circle</i>Account
-          </li>{" "}
-          <li className="li">
-            <i className="small material-icons">dashboard</i>
-            <a href="/Wallet/"> Dashboard</a>
-          </li>
-          <li className="li">
-            <div>
-              <i className="small material-icons">stay_current_portrait</i>
-              <Link to="/Wallet/BuyLoad">Buy Load</Link>
-            </div>
-          </li>
-          <li>
-            <div>
-              <i className="small material-icons">monetization_on</i>
-              <Link to="/Wallet/Transfer">Transfer Money</Link>
-            </div>
-          </li>
-          <li>
-            <div>
-              <i className="small material-icons">settings </i>
-              <Link to="/Wallet/Settings">Settings</Link>
-            </div>
-          </li>
-        </ul>
-      </div> */}
-      {/* <div className="walletop grey lighten-5 show-on-medium-and-down hide-on-large-only">
-       */}
       <div className="walletop">
         <br></br>
         <div className="row">
