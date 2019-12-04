@@ -22,6 +22,10 @@ const Settings = ({ users: { user }, loadUser, setLoading, changePass }) => {
   const [passn, setpassn] = useState("");
   const [pass, setpass] = useState(false);
   const [editd, setedit] = useState(false);
+  const [emailch, setemailc] = useState(false);
+  const emailc = () => {
+    setemailc(true);
+  };
   const passi = e => {
     e.preventDefault();
     setpass(!pass);
@@ -91,11 +95,16 @@ const Settings = ({ users: { user }, loadUser, setLoading, changePass }) => {
               </label>
               <br></br>
               <label className="col s12 ">
-                <input type="checkbox" />
+                <input type="checkbox" onChange={emailc} />
                 <span className="blacktxt">
                   There are recommended actions for my account
                 </span>
-              </label>{" "}
+              </label>
+              {emailch && (
+                <Fragment>
+                  <button className="btn">Save</button>
+                </Fragment>
+              )}{" "}
             </form>
             <br />
             <br />
@@ -107,7 +116,7 @@ const Settings = ({ users: { user }, loadUser, setLoading, changePass }) => {
                 Change Password
               </a>
               {pass && (
-                <Fragment>
+                <div>
                   <form className="fade">
                     <input
                       type="password"
@@ -131,11 +140,11 @@ const Settings = ({ users: { user }, loadUser, setLoading, changePass }) => {
                   </form>
                   <br />
                   <br />
-                </Fragment>
+                </div>
               )}
             </div>
-            <form>
-              <label className="col s12 ">
+            {/* <form> */}
+            {/* <label className="col s12 ">
                 <input
                   type="checkbox"
                   className="filled-in"
@@ -143,7 +152,7 @@ const Settings = ({ users: { user }, loadUser, setLoading, changePass }) => {
                 />
                 <span className="blacktxt">Send OTP on login </span>
               </label>
-            </form>
+            </form> */}
             <br />
             <h5>Privacy Settings</h5>
             <div className="divider"></div>

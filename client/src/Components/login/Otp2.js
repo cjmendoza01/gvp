@@ -4,8 +4,8 @@ import { setOTP, authenticate } from "../../actions/usersAction";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 const Otp = props => {
-  const { otp2, token, isAuthenticated } = props.users;
-
+  // const { otp2, token, isAuthenticated } = props.users;
+  const { otp2 } = props.users;
   const [code2, setCode2] = useState("");
   // if (isAuthenticated) {
   //   console.log("yes");
@@ -50,7 +50,7 @@ const Otp = props => {
               Submit
             </button>
             <br></br>
-            <a>Through email</a>
+            {/* <a>Through email</a> */}
           </div>
         </div>
       </div>

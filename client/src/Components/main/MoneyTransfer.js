@@ -13,13 +13,13 @@ const MoneyTransfer = () => {
   return (
     <div className="container">
       Money Transfer
-      <div>
+      <div className="container">
         <Webcam
           audio={false}
-          height={720}
+          height={200}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
-          width={1280}
+          width={100}
           videoConstraints={videoConstraints}
         />
         <button onClick={capture}>Capture photo</button>

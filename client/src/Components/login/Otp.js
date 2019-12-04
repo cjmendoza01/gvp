@@ -6,7 +6,7 @@ import M from "materialize-css/dist/js/materialize.min.js";
 const Otp = props => {
   const [code, setCode] = useState("");
   // { users: { otp, loading, user }, setOTP }
-  const { otp, loading, user } = props.users;
+  const { otp, user } = props.users;
 
   const check = () => {
     if (code === otp) {
