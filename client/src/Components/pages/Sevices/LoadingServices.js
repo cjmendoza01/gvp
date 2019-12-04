@@ -26,7 +26,7 @@ const LoadingServices = () => {
         <div className="divider"></div>
         <br />
         <div className="row">
-          <div className="col s12 m4 l3">
+          <div className="col s6 m4 l3">
             <div className="card">
               <img src={Globe} alt="" className="img1" />
             </div>
@@ -38,24 +38,24 @@ const LoadingServices = () => {
             </div>
           </div> */}
 
-          <div className="col s12 m4 l3">
+          <div className="col s6 m4 l3">
             <div className="card">
               <img src={sun} alt="" className="img1" />
             </div>
           </div>
 
-          <div className="col s12 m4 l3">
+          <div className="col s6 m4 l3">
             <div className="card">
               <img src={tm} alt="" className="img1" />
             </div>
           </div>
 
-          <div className="col s12 m4 l3">
+          <div className="col s6 m4 l3">
             <div className="card">
               <img src={tnt} alt="" className="img1" />
             </div>
           </div>
-          <div className="col s12 m4 l3">
+          <div className="col s6 m4 l3">
             <div className="card">
               <img src={smart} alt="" className="img1" />
             </div>

@@ -12,43 +12,56 @@ const Cashin = () => {
     <div className="container">
       You can cash In/out through GVPX machines or through: Cash In
       <div>
-        <div className="cashinimg">
+        <div className="cashinimg col s4">
           <div className="container">
             <center>
-              <img src={Palawan} className="img_cashin" />
+              <div className="cashhead">
+                <img src={Palawan} className="img_cashin" />
+              </div>
               <div className="desc_cashin"> Palawan Express </div>
             </center>
           </div>
         </div>
-        <br></br>
-        <div className="cashinimg">
+
+        <div className="cashinimg col s4">
           <div className="container">
             <center>
-              <img src={Bayad} className="img_cashin" />
+              <div className="cashhead">
+                <img src={Bayad} className="img_cashin" />
+              </div>
               Bayad Center
             </center>
           </div>
         </div>
-        <div className="cashinimg">
+        <div className="cashinimg col s4">
           <div className="container">
             <center>
-              <img src={Cebuana} className="img_cashin" />
+              {" "}
+              <div className="cashhead">
+                <img src={Cebuana} className="img_cashin" />
+              </div>
               Cebuana
             </center>
           </div>
         </div>
-        <div className="cashinimg">
+        <div className="cashinimg col s4">
           <div className="container">
             <center>
-              <img src={cliqq} className="img_cashin" />
+              {" "}
+              <div className="cashhead">
+                <img src={cliqq} className="img_cashin" />
+              </div>
               Palawan Express
             </center>
           </div>
         </div>
-        <div className="cashinimg">
+        <div className="cashinimg col s4">
           <div className="container">
             <center>
-              <img src={lbc} className="img_cashin" />
+              {" "}
+              <div className="cashhead">
+                <img src={lbc} className="img_cashin" />
+              </div>
               LBC
             </center>
           </div>
