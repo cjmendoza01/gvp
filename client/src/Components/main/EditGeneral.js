@@ -59,7 +59,7 @@ const EditGeneral = props => {
             <div className="col s12">
               <input
                 id="number"
-                type="text"
+                type="number"
                 name="number"
                 value={number}
                 onChange={onChange}

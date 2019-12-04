@@ -14,7 +14,7 @@ const Phonever = ({
   const send = () => {
     // setStatus(code);
     //+639053724922
-    const phonen = "+639" + phone;
+    const phonen = "09" + phone;
     phonev(phonen);
   };
   const check2 = () => {
