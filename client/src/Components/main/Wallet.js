@@ -33,7 +33,9 @@ const Wallet = props => {
     M.toast({ html: "Password Changed" });
     localStorage.clear("token");
   }
-
+  if (status === "Edited") {
+    window.location.reload(false);
+  }
   return (
     <div className="fade ">
       <div className="walletop">

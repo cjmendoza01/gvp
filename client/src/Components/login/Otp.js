@@ -43,7 +43,7 @@ const Otp = props => {
               Submit
             </button>
             <br></br>
-            <a href="">change email</a>
+            {/* <a href="">change email</a> */}
             {/* </form> */}
           </div>
           {/* </div> */}

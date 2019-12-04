@@ -7,9 +7,9 @@ const Otp = props => {
   const { otp2, token, isAuthenticated } = props.users;
 
   const [code2, setCode2] = useState("");
-  if (isAuthenticated) {
-    console.log("yes");
-  }
+  // if (isAuthenticated) {
+  //   console.log("yes");
+  // }
   const check = () => {
     // const otp={
     //   otp:code2,

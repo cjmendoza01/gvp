@@ -54,7 +54,7 @@ const Phonever = ({
               <input
                 type="number"
                 name="phone"
-                maxlength="9"
+                maxLength="9"
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
               />

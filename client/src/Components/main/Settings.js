@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { loadUser, setLoading, changePass } from "../../actions/usersAction";
+import EditGeneral from "./EditGeneral";
 import M from "materialize-css/dist/js/materialize.min.js";
 const Settings = ({ users: { user }, loadUser, setLoading, changePass }) => {
   useEffect(() => {
@@ -16,12 +17,18 @@ const Settings = ({ users: { user }, loadUser, setLoading, changePass }) => {
     lname = user.lname;
     phone = user.number;
   }
+
   const [passw, setpassw] = useState("");
   const [passn, setpassn] = useState("");
   const [pass, setpass] = useState(false);
+  const [editd, setedit] = useState(false);
   const passi = e => {
     e.preventDefault();
     setpass(!pass);
+  };
+  const edit = e => {
+    e.preventDefault();
+    setedit(true);
   };
   const changep = e => {
     e.preventDefault();
@@ -46,25 +53,29 @@ const Settings = ({ users: { user }, loadUser, setLoading, changePass }) => {
           <div className="container">
             <h5>General</h5>
             <div className="divider"></div>
-            <br></br>
-            <div className="col s12 ">
-              <strong>Name:</strong> {fname} {lname}
+            <div className="col s12 offset-s11">
+              <a href="" onClick={edit}>
+                edit
+              </a>
             </div>
-            {/* <div className="col s6 push-s5 ">
-              <a href="">edit</a>
-            </div> */}
-            <div className="col s11 ">
-              <strong>Email:</strong> {email}
-            </div>
-            {/* <div className="col s1  ">
-              <a href="">edit</a>
-            </div> */}
-            <div className="col s11 ">
-              <strong>Phone:</strong> {phone}
-            </div>
-            {/* <div className="col s1   ">
-              <a href="">edit</a>
-            </div> */}
+            {editd ? (
+              <EditGeneral />
+            ) : (
+              <Fragment>
+                {" "}
+                <div className="col s12 ">
+                  <strong>Name:</strong> {fname} {lname}
+                </div>
+                <div className="col s11 ">
+                  <strong>Email:</strong> {email}
+                </div>
+                <div className="col s11 ">
+                  <strong>Phone:</strong> {phone}
+                </div>
+              </Fragment>
+            )}
+            <br />
+            <br />
             <br />
             <br />
             <br />

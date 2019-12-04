@@ -101,7 +101,33 @@ export const clearError = () => {
     type: CLEAR_ERROR
   };
 };
+export const editUser = user => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    const info = {
+      fname: user.fname,
+      lname: user.lname,
+      // email: user.email,
+      number: user.number
+    };
 
+    const res = await axios.put("/api/users/edit", info, config);
+
+    dispatch({
+      type: SET_STATUS,
+      payload: "Edited"
+    });
+  } catch (error) {
+    dispatch({
+      type: SET_ERROR,
+      payload: error.data
+    });
+  }
+};
 export const getUser = () => async dispatch => {
   setOtps();
   try {
@@ -125,7 +151,7 @@ export const loadUser = () => async dispatch => {
   }
 
   const res = await axios.get("/auth", null, config);
-  console.log(res.data);
+
   dispatch({
     type: GET_USER,
     payload: res.data
