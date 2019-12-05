@@ -5,9 +5,9 @@ const MoneyTransfer = () => {
     facingMode: "user"
   };
   const webcamRef = React.useRef(null);
-
+  let imageSrc;
   const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
+    imageSrc = webcamRef.current.getScreenshot();
   }, [webcamRef]);
 
   return (
