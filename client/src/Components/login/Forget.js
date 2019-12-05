@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { forget } from "../../actions/usersAction";
 import M from "materialize-css/dist/js/materialize.min.js";
-import Recovery from "./Recovery";
+
 const Forget = props => {
   const [email, setEmail] = useState("");
   const { status, error } = props.users;
@@ -53,8 +53,6 @@ const Forget = props => {
             <br></br>
           </div>
         </div>
-
-        <Recovery />
       </div>
     </div>
   );
