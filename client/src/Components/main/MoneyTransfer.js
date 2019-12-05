@@ -13,6 +13,7 @@ const MoneyTransfer = () => {
   return (
     <div className="container">
       Money Transfer
+      {imageSrc && <div>{imageSrc}</div>}
       <div className="container">
         <Webcam
           audio={false}
