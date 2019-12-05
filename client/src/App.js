@@ -8,13 +8,14 @@ import Navbar from "./Components/layout/Navbar";
 import Contact from "./Components/pages/Contact";
 import About from "./Components/pages/About";
 import Login from "./Components/login/Login";
+import Forget from "./Components/login/Forget";
 import Phonever from "./Components/login/Phonever";
 import Register from "./Components/login/Register";
 import PaymentServices from "./Components/pages/Sevices/PaymentServices";
 import LoadingServices from "./Components/pages/Sevices/LoadingServices";
 import PadalaExpress from "./Components/pages/Sevices/PadalaExpress";
 import MoneyExchange from "./Components/pages/Sevices/MoneyExchange";
-
+import Recovery from "./Components/login/Recovery";
 import Wallet from "./Components/main/Wallet";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -32,6 +33,8 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/ForgetPassword" component={Forget} />
+              <Route path="/Recovery/:id" component={Recovery} />
               <Route exact path="/about" component={About} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/contact" component={Contact} />

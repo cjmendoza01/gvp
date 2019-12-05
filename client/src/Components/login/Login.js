@@ -76,7 +76,7 @@ const Login = props => {
               value={password}
               onChange={e => setPass(e.target.value)}
             />
-            Password<a href="/forgotpassword"> Forgot Password!</a>
+            Password<a href="/ForgetPassword"> Forget Password!</a>
             <br />
             <br />
             <button className="btn" onClick={onSubmit} name="action">

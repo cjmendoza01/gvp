@@ -96,6 +96,26 @@ export const changePass = user => async dispatch => {
   }
 };
 
+export const changePass2 = data => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    const res = await axios.post("/api/users/changepassLink", data, config);
+    dispatch({
+      type: SET_STATUS,
+      payload: res.data.msg
+    });
+  } catch (err) {
+    dispatch({
+      type: SET_ERROR,
+      payload: err.response.data.msg
+    });
+  }
+};
+
 export const clearError = () => {
   return {
     type: CLEAR_ERROR
@@ -128,6 +148,35 @@ export const editUser = user => async dispatch => {
     });
   }
 };
+
+export const forget = email => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    const data = {
+      email: email
+    };
+    const res = await axios.post("/api/users/forget", data, config);
+
+    if (res.data.msg === "PasswordChange") {
+      dispatch({
+        type: SET_STATUS,
+        payload: res.data.msg
+      });
+    } else {
+      dispatch({
+        type: SET_ERROR,
+        payload: res.data.msg
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getUser = () => async dispatch => {
   setOtps();
   try {

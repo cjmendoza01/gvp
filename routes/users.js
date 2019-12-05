@@ -81,7 +81,6 @@ router.put("/", async (req, res) => {
 router.put("/edit", auth, async (req, res) => {
   const { fname, lname, email, number } = req.body;
 
-  // Build contact object
   const contactFields = {};
   if (fname) contactFields.fname = fname[0].toUpperCase() + fname.slice(1);
   if (lname) contactFields.lname = lname[0].toUpperCase() + lname.slice(1);
@@ -151,8 +150,8 @@ router.post(
     }
   }
 );
-//Login
 
+//Login
 router.post("/auth", async (req, res) => {
   let tk = null;
   let message = null;
@@ -227,6 +226,130 @@ router.post("/auth", async (req, res) => {
   }
 });
 
+router.post("/phonever", async (req, res) => {
+  const { phone } = req.body;
+
+  try {
+    const tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+    // const accountSid = "ACc0e429210a13959e6b6d0ff1f16fd39a";
+    // const authToken = "ec54945685d27767aa3585bca550523f";
+    // const client = require("twilio")(accountSid, authToken);
+
+    // client.messages.create({
+    //   body: "verif Code: G" + tk,
+    //   from: "+12082623275",
+    //   to: phone
+    // });
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    const data = {
+      address: phone,
+      message: "GVPX Verification Code: G" + tk
+    };
+    const res1 = await axios.post(
+      "https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/21586241/requests?access_token=ouleGmIVKFvJxSmNvn_yqLaAWJUhf7DtY_3m3LXwEgo",
+      data,
+      config
+    );
+
+    res.json({ tk });
+  } catch (error) {
+    res.send("Error");
+  }
+});
+
+//Email verification
+router.post("/emailver", (req, res) => {
+  const { token, email } = req.body;
+  try {
+    const mailOptions = {
+      // from: "crill",
+      to: email,
+      subject: "GVPX Email Verification ",
+      html:
+        "<h1>Successfully Registered!<h1> <br>copy url:<h5> " + token + "</h5>"
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
+    res.send("Successful");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//Forget Password
+router.post("/forget", async (req, res) => {
+  const { email } = req.body;
+  let tk;
+
+  try {
+    const em = await User.findOne({ email });
+    if (em) {
+      const payload = {
+        user: {
+          id: em.id
+        }
+      };
+
+      jwt.sign(
+        payload,
+        config.get("jwtSecret"),
+        {
+          expiresIn: 360000
+        },
+        (err, token) => {
+          if (err) throw err;
+
+          const mailOptions = {
+            to: email,
+            subject: "GVPX Password Reset",
+            // html: `<center>Reset Password</center><br/><br/>Click the Link: <a href='http://localhost:3000/Recovery/${token}'>GVPX Reset Password</a>`
+            html: `<center>Reset Password</center><br/><br/>Click the Link: <a href='https://radiant-refuge-61599.herokuapp.com/Recovery/${token}'>GVPX Reset Password</a>`
+          };
+
+          transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
+              console.log(error);
+              res.send(error);
+            } else {
+              res.json({ msg: "PasswordChange" });
+              console.log("Email sent: " + info.response);
+            }
+          });
+        }
+      );
+    } else {
+      res.json({ msg: "Email doesnt exist" });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//getUsers
+router.get("/", async (req, res) => {
+  try {
+    const user = await User.find();
+    if (user == "") {
+      return res.json({ msg: "Add a User" });
+    } else {
+      res.send(" User");
+    }
+  } catch (err) {
+    console.err(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 //phone verification
 router.get("/phonever", async (req, res) => {
   const email = req.body;
@@ -269,77 +392,7 @@ router.get("/phonever", async (req, res) => {
     res.send(email);
   }
 });
-// +639053724922
-router.post("/phonever", async (req, res) => {
-  const { phone } = req.body;
-
-  try {
-    const tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
-    // const accountSid = "ACc0e429210a13959e6b6d0ff1f16fd39a";
-    // const authToken = "ec54945685d27767aa3585bca550523f";
-    // const client = require("twilio")(accountSid, authToken);
-
-    // client.messages.create({
-    //   body: "verif Code: G" + tk,
-    //   from: "+12082623275",
-    //   to: phone
-    // });
-    const config = {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    };
-    const data = {
-      address: phone,
-      message: "GVPX Verification Code: G" + tk
-    };
-    const res1 = await axios.post(
-      "https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/21586241/requests?access_token=ouleGmIVKFvJxSmNvn_yqLaAWJUhf7DtY_3m3LXwEgo",
-      data,
-      config
-    );
-
-    res.json({ tk });
-  } catch (error) {
-    res.send("Error");
-  }
-});
-
-//email verification
-router.post("/emailver", (req, res) => {
-  const { token, email } = req.body;
-  try {
-    const mailOptions = {
-      from: "crill.garci18@gmail.com",
-      to: email,
-      subject: "GVPX Email Verification ",
-      html:
-        "<h1>Successfully Registered!<h1> <br>copy url:<h5> " + token + "</h5>"
-    };
-
-    transporter.sendMail(mailOptions, function(error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log("Email sent: " + info.response);
-      }
-    });
-    res.send("Successful");
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-//getUsers
-router.get("/", async (req, res) => {
-  try {
-    const user = await User.find();
-    if (user == "") return res.json({ msg: "Add a User" });
-  } catch (err) {
-    console.err(err.message);
-    res.status(500).send("Server Error");
-  }
-});
+// Change password (Setings)
 router.post("/changepass", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -356,6 +409,71 @@ router.post("/changepass", async (req, res) => {
     res.json({ msg: "Server Error" });
   }
 });
+
+//Change Password (Link)
+router.post("/changepassLink", async (req, res) => {
+  try {
+    const { token, password } = req.body;
+    // const { token } = req.body;
+    const jtoken = jwt.verify(token, config.get("jwtSecret"));
+    const id = jtoken.user.id;
+    const contactFields = {};
+    const salt = await bcrypt.genSalt(10);
+    contactFields.password = await bcrypt.hash(password, salt);
+    user = await User.findByIdAndUpdate(
+      id,
+      { $set: contactFields },
+      { new: true }
+    );
+    res.json({ msg: "PasswordSuccessfullyUpdated" });
+  } catch (err) {
+    res.json({ msg: "Server Error" });
+  }
+});
+
+//phone verification
+router.get("/phonever", async (req, res) => {
+  const email = req.body;
+  console.log(email);
+  const user = await User.findOne({ email: email });
+  if (user) {
+    const number = user.number;
+
+    try {
+      const tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
+      // const accountSid = "ACc0e429210a13959e6b6d0ff1f16fd39a";
+      // const authToken = "ec54945685d27767aa3585bca550523f";
+      // const client = require("twilio")(accountSid, authToken);
+
+      // client.messages.create({
+      //   body: "verif Code: G" + tk,
+      //   from: "+12082623275",
+      //   to: number
+      // });
+      const config = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const data = {
+        address: number,
+        message: "GVPX Verification Code: G" + tk
+      };
+      const res1 = await axios.post(
+        "https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/21586241/requests?access_token=ouleGmIVKFvJxSmNvn_yqLaAWJUhf7DtY_3m3LXwEgo",
+        data,
+        config
+      );
+
+      res.json({ tk });
+    } catch (error) {
+      res.send("Error");
+    }
+  } else {
+    res.send(email);
+  }
+});
+
 module.exports = router;
 
 // Globe Labs

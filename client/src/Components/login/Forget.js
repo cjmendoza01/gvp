@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { forget } from "../../actions/usersAction";
+import M from "materialize-css/dist/js/materialize.min.js";
+import Recovery from "./Recovery";
+const Forget = props => {
+  const [email, setEmail] = useState("");
+  const { status, error } = props.users;
+  if (error) {
+    M.toast({ html: error });
+    props.clearError();
+  }
 
-const Forget = () => {
+  const send = e => {
+    e.preventDefault();
+    props.forget(email);
+  };
+  if (status === "PasswordChange") {
+    return (
+      <div className="fade">
+        <br />
+        <br />
+        Check your Email for password Recovery....
+      </div>
+    );
+  }
+
   return (
     <div className="fade">
       <div className="container">
+        <br />
+        <br />
         <div className="" style={{ width: "300px" }}>
           <div className="card-panel center">
             <h4>
@@ -13,26 +39,27 @@ const Forget = () => {
               </strong>{" "}
             </h4>
             <input
-              type="text"
+              type="email"
               name="code2"
-              //   value={code2}
-              //   onChange={e => setCode2(e.target.value)}
+              value={email}
+              onChange={e => setEmail(e.target.value)}
             />
             Email
             <br />
             <br />
-            <button
-              className="btn"
-              // onClick={check}
-              name="action"
-            >
+            <button className="btn" type="submit" onClick={send} name="action">
               Submit
             </button>
             <br></br>
           </div>
         </div>
+
+        <Recovery />
       </div>
     </div>
   );
 };
-export default Forget;
+const mapStateToProps = state => ({
+  users: state.users
+});
+export default connect(mapStateToProps, { forget })(Forget);
