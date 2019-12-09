@@ -97,7 +97,7 @@ router.put("/edit", auth, async (req, res) => {
       { $set: contactFields },
       { new: true }
     );
-    // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWRkNjQ4MzQ5ZWU4ZWYwNmQ3NmM3N2ZkIn0sImlhdCI6MTU3NTM0MzUyOCwiZXhwIjoxNTc1NzAzNTI4fQ.84i1eclhCjl8UNXQ8NDl_4Tri0aKdNVgf985WKdkp7M
+   
     res.json(contact);
   } catch (err) {
     console.error(er.message);
@@ -177,15 +177,7 @@ router.post("/auth", async (req, res) => {
 
     if (user2.number) {
       tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
-      // const accountSid = "ACc0e429210a13959e6b6d0ff1f16fd39a";
-      // const authToken = "ec54945685d27767aa3585bca550523f";
-      // const client = require("twilio")(accountSid, authToken);
-
-      // client.messages.create({
-      //   body: "verif Code: " + tk,
-      //   from: "+12082623275",
-      //   to: user2.number
-      // });
+    
       const config = {
         headers: {
           "Content-Type": "application/json"
@@ -231,15 +223,7 @@ router.post("/phonever", async (req, res) => {
 
   try {
     const tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
-    // const accountSid = "ACc0e429210a13959e6b6d0ff1f16fd39a";
-    // const authToken = "ec54945685d27767aa3585bca550523f";
-    // const client = require("twilio")(accountSid, authToken);
-
-    // client.messages.create({
-    //   body: "verif Code: G" + tk,
-    //   from: "+12082623275",
-    //   to: phone
-    // });
+   
     const config = {
       headers: {
         "Content-Type": "application/json"
@@ -360,15 +344,7 @@ router.get("/phonever", async (req, res) => {
 
     try {
       const tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
-      // const accountSid = "ACc0e429210a13959e6b6d0ff1f16fd39a";
-      // const authToken = "ec54945685d27767aa3585bca550523f";
-      // const client = require("twilio")(accountSid, authToken);
-
-      // client.messages.create({
-      //   body: "verif Code: G" + tk,
-      //   from: "+12082623275",
-      //   to: number
-      // });
+     
       const config = {
         headers: {
           "Content-Type": "application/json"
@@ -441,15 +417,7 @@ router.get("/phonever", async (req, res) => {
 
     try {
       const tk = Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
-      // const accountSid = "ACc0e429210a13959e6b6d0ff1f16fd39a";
-      // const authToken = "ec54945685d27767aa3585bca550523f";
-      // const client = require("twilio")(accountSid, authToken);
-
-      // client.messages.create({
-      //   body: "verif Code: G" + tk,
-      //   from: "+12082623275",
-      //   to: number
-      // });
+     
       const config = {
         headers: {
           "Content-Type": "application/json"
@@ -476,8 +444,3 @@ router.get("/phonever", async (req, res) => {
 
 module.exports = router;
 
-// Globe Labs
-// code=ks5ppx4IbB4bAC54o5eu84Rn4hzxz5aIEojBdHG6brEUMKMMruEbgynfGxMEbsGyk8eSr8x9GfdjKyRUx7B9KtqbanaIEM8daFbyoXKu4erX5CxM89XfkqRyeHzaTXKERy8cR65Hnq8rgfp4reBCyaon8uRn8gzFpxaGqIpeBbyt9XKr5Uxdx8zfMek7eSyXMEzsGogEAfKkMnEuyxbAxUjxjjEH5xz6zIxoRRqhj4oqXuG74gACyepbgIqA96ns
-
-// "access_token": "ouleGmIVKFvJxSmNvn_yqLaAWJUhf7DtY_3m3LXwEgo",
-// "subscriber_number": "9053724922"
